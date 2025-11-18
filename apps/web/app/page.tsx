@@ -11,4 +11,5 @@ export default async function Home() {
 
 // export const revalidate = 60 // revalidate every 60 seconds
 // or
-// export const dynamic = 'force-dynamic'
+// this forces the page to be dynamic so that data is fetched on every request
+export const dynamic = 'force-dynamic'
