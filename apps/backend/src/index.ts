@@ -38,7 +38,14 @@ app.post("/user", (req, res) => {
     });
 })
 
-app.listen(8080, () => {
-    console.log(`server is lisenting on port 8080`);
-    
-})
+app.listen(8080, async () => {
+  try {
+    await prismaClient.$connect();
+    console.log("✅ Database connected");
+  } catch (err: any) {
+    console.error("❌ Failed to connect to the database:", err?.message ?? err);
+    process.exit(1);
+  }
+
+  console.log(`server is listening on port 8080`);
+});
