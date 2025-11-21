@@ -9,7 +9,7 @@ on:
             - main
 
 jobs:
-    # defining the automations scipt and config for the build part
+    # defining the automations scipt and config for the build part.
     build:
         runs-on: ubuntu-latest
 
