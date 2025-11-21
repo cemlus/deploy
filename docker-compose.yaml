@@ -4,7 +4,7 @@ services:
   backend:
     build:
       context: .
-      dockerfile: docker/Dockerfile.backend
+      dockerfile: docker/dockerfile.backend
     ports:
       - "8080:8080"
     environment:
@@ -14,7 +14,7 @@ services:
   frontend:
     build:
       context: .
-      dockerfile: docker/Dockerfile.frontend
+      dockerfile: docker/dockerfile.frontend
       args:
         - DB_URL=postgresql://postgres:postgres@postgres:5432/postgres
     ports:
@@ -26,7 +26,7 @@ services:
   ws:
     build:
       context: .
-      dockerfile: docker/Dockerfile.ws
+      dockerfile: docker/dockerfile.ws
     ports:
       - "8081:8081"
     environment:
@@ -37,11 +37,12 @@ services:
   postgres:
     image: postgres
     environment:
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_PASSWORD=itsnotthatserious
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql
+      # - postgres_data:/var/lib/postgresql/data
 
 volumes:
   postgres_data:
