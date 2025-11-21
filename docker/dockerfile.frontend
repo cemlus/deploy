@@ -11,14 +11,12 @@ COPY ./turbo.json ./turbo.json
 
 COPY apps/web/package.json ./apps/web/package.json
 
-RUN bun install
-
 COPY . .
 
 RUN bun install
 RUN bun run db:generate
-RUN DB_URL=${DB_URL} bun run build 
-# RUN DB_URL=${DB_URL} bunx turbo build --filter=web...
+# RUN DB_URL=${DB_URL} bun run build:web
+RUN DB_URL=${DB_URL} bunx turbo build --filter=web...
 
 EXPOSE 3000
 

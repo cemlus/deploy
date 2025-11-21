@@ -27,7 +27,7 @@ jobs:
               uses: docker/build-push-action@v4
               with:
                   context: . #build from the root folder
-                  file: ./docker/dockerfile.backend
-                  build-args: -DB_URL=${{secrets.DB_URL}}
+                  file: ./docker/dockerfile.frontend
+                  build-args: DB_URL=${{secrets.DB_URL}}
                   push: true
-                  tags: siddhantbh/week27-2-be:${{github.sha}}
+                  tags: siddhantbh/week27-2-fe:${{github.sha}}
